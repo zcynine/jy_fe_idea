@@ -36,44 +36,48 @@ eslint --init
 
 * 基本配置如下(.eslintrc.js)
 
-```
-// http://eslint.org/docs/user-guide/configuring
-module.exports = {
-  root: true,
-  parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module'
-  },
-  env: {
-    browser: true,
-  },
-  // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'standard',
-  // required to lint *.vue files
-  plugins: [
-    'html'
-  ],
-  // add your custom rules here
-  'rules': {
-    // allow paren-less arrow functions
-    'arrow-parens': 0,
-    // allow async-await
-    'generator-star-spacing': 0,
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
-  }
-}
-```
-note: 
-1. 解析器(parser)：使用了babel-eslint，这个可以在package.json中找到，说明我们已经安装过该解析器了。 
-2. 环境配置(env)：在浏览器中使用eslint。 
-3. 继承(extends)：该配置文件继承了standard规则，具体规则自己看文档。 
-4. 规则(rules)：具体校验规则
+    ```
+    // http://eslint.org/docs/user-guide/configuring
+    module.exports = {
+      root: true,
+      parser: 'babel-eslint',
+      parserOptions: {
+        sourceType: 'module'
+      },
+      env: {
+        browser: true,
+      },
+      // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
+      extends: 'standard',
+      // required to lint *.vue files
+      plugins: [
+        'html'
+      ],
+      // add your custom rules here
+      'rules': {
+        // allow paren-less arrow functions
+        'arrow-parens': 0,
+        // allow async-await
+        'generator-star-spacing': 0,
+        // allow debugger during development
+        'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+      }
+    }
+    ```
 
-此外：在rules中每个配置项后面第一个值是eslint规则的错误等级，第二个值是处理方式：
-1. “off” 或 0 - 关闭这条规则 
-2. “warn” 或 1 - 违反规则会警告（不会影响项目运行） 
-3. “error” 或 2 - 违反规则会报错（屏幕上一堆错误代码~）
+ note: 
+    1. 解析器(parser)：使用了babel-eslint，这个可以在package.json中找到，说明我们已经安装过该解析器了。 
+    2. 环境配置(env)：在浏览器中使用eslint。 
+    3. 继承(extends)：该配置文件继承了standard规则，具体规则自己看文档。 
+    4. 规则(rules)：具体校验规则
+
+此外，在rules中每个配置项后面第一个值是eslint规则的错误等级，第二个值是处理方式：
+    1. “off” 或 0 - 关闭这条规则 
+    2. “warn” 或 1 - 违反规则会警告（不会影响项目运行） 
+    3. “error” 或 2 - 违反规则会报错（屏幕上一堆错误代码~）
+
+有些规则还带有可选的参数，比如`comma-dangle`可以写成`[ "error", "always-multiline" ]`；`no-multi-spaces`可以写成`[ "error", { exceptions: { "ImportDeclaration": true }}]`。
+
 
 
 #### 使用
@@ -85,6 +89,40 @@ eslint xxx.js
 * 如果检测到js文件有不符合规则之处，可以自动修复
 ```
 eslint xxx.js --fix
+```
+
+#### 例外情况
+* ESLint提供了多种临时禁用规则的方式，比如我们可以通过一条eslint-disable-next-line备注来使得下一行可以跳过检查：
+```
+// eslint-disable-next-line
+var a = 123;
+var b = 456;
+```
+在上面的示例代码中，var a = 123不会受到检查，而var b = 456则右恢复检查。
+
+    我们还可以通过成对的eslint-enable和eslint-disable备注来禁用对某一段代码的检查，但是稍不小心少写了一个eslint-disable就可能会导致后面所有文件的检查都被禁用，所以并不推荐使用。
+
+#### 使用共享的配置文件
+* 为了更好的统一管理不同的项目，我们需要一个公共的规则
+step1: 我们可以将定义好规则的.eslintrc.js文件存储到一个公共的位置，比如public-eslintrc.js：
+```
+module.exports = {
+  	extends: 'eslint:recommended',
+      env: {
+        node: true,
+      },
+      rules: {
+        'no-console': 'off',
+        'indent': [ 'error', 2 ],
+        'quotes': [ 'error', 'single' ],
+      },
+};
+```
+step2：将原来的.eslintrc.js文件改成这样：
+```
+module.exports = {
+  	extends: './public-eslintrc.js',
+};
 ```
 
 

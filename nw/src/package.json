@@ -1,0 +1,13 @@
+{
+  "name": "nw",
+  "version": "1.0.4",
+  "main": "views/main.html",
+  "window": {
+    "min_width": 400,
+    "min_height": 400,
+    "icon": "assets/icon.png"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}

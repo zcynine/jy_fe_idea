@@ -1,5 +1,5 @@
 # ESLint 配置
-<a href="http://eslint.cn/" target="_blank">中文官网</a>
+[中文官网](http://eslint.cn/)
 
 #### 简介
 

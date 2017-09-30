@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+</head>
+<style>
+p {
+    margin: 0;
+    padding: 0;
+}
+</style>
+
+<body>
+    <div id="app">
+        <div>{{message}}</div>
+        <div>
+            <span v-bind:title="message">mouse hover and view the message!</span>
+        </div>
+        <div v-if="seen">aha？</div>
+        <div v-show="num>10">disply none or block?</div>
+        <div id='app5'>
+            <p v-if="age>18">you are adult!</p>
+            <p v-else>you are baby</p>
+        </div>
+        <div>
+            <ul>
+                <li v-for="item in items">{{item.text}}</li>
+            </ul>
+        </div>
+        <button v-on:click="clickEvent">{{message}}</button>
+        <div>
+            <input type="" name="" v-model="message">
+            <p>{{message}}</p>
+        </div>
+        <div>
+            <ol>
+                <todo-item v-for="item in groceryList" v-bind:aaa="item" v-bind:key="item.id"></todo-item>
+            </ol>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+    Vue.component('todo-item', {
+        props: ['aaa'], // todo-item的自定义属性，名为'todo'
+        template: '<li>{{ aaa.text }}</li>'
+    })
+
+    var list = [
+    	{text: '南波湾'},
+    	{text: '南波兔'},
+    	{text: '南伯思睿'},
+    	{text: '南波佛'},
+    ];
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            groceryList: [
+                { id: 0, text: 'apple' },
+                { id: 1, text: 'banana' },
+                { id: 2, text: 'orange' },
+                { id: 3, text: 'pear' },
+                { id: 4, text: 'melonnnnnn' },
+            ],
+            //message: 'stupid as you are!'
+            items: list,
+            message: 'page loaded at ' + new Date().toLocaleString(),
+            seen: true,
+            num: 8,
+            age: 22
+        },
+        methods: {
+            clickEvent: function() {
+                alert('点泥煤啊')
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

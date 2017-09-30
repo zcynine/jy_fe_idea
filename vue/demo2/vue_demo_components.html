@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>components</title>
+</head>
+<body>
+	<div id="app">
+		<my-component></my-component>
+		<child-component></child-component>
+	</div>	
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+	let childComponent = Vue.extend({
+		template: '<span style="border:#f00 1px dotted">this is child component</span>'
+	});
+
+	let myComponent = Vue.extend({
+		template: '<div style="border:#f00 1px solid;height: 200px;width: 300px;">this is custome component<br/><child-component></child-component></div>',
+		components: {
+			childComponent
+		}
+	});
+
+	new Vue({
+		el: '#app',
+		components: {
+			myComponent, childComponent
+		}
+	});
+
+</script>

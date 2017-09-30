@@ -1,0 +1,151 @@
+<import src="../common/head.wxml" />
+
+<!--index.wxml-->
+<view class="container">
+    <view class="index-img">
+        <image src="{{src}}" mode="widthFix"></image>
+        <view class="product-nav ">
+            <block wx:for="{{list01}}" wx:key="{{item.id}}">
+                <view id="{{item.id}}" class="nav-a-div {{item.open ? 'active' : '' }}" bindtap='kindToggle'>
+                    <view class="nav-a-icon">
+                        <image src='{{item.imgurl}}'></image>
+                    </view>
+                    <view>{{item.name}}</view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <!--亮点-->
+    <view class="line">
+        <template is="head" data="{{name: '亮点'}}"/>
+
+        <!--亮点内容-->
+        <view class='line-cont'>
+            <block wx:for="{{list02}}">
+                <view class='line-box' wx:if="{{item.imgfloat == 0}}">
+                    <view class='box-cont line-img'>
+                        <image src='{{item.imgurl}}'></image>
+                    </view>
+                    <view class='box-cont line-text'>
+                        <view class='line-title'>{{item.title}}</view>
+                        <view>{{item.cont}}</view>
+                        <view class='line-seq seq-{{item.position}}'>{{item.id}}</view>
+                    </view>
+                </view>
+                <view class='line-box' wx:elif="{{item.imgfloat == 1}}">
+                    <view class='box-cont line-text'>
+                        <view class='line-title'>{{item.title}}</view>
+                        <view>{{item.cont}}</view>
+                        <view class='line-seq seq-{{item.position}}'>{{item.id}}</view>
+                    </view>
+                    <view class='box-cont line-img'>
+                        <image src='{{item.imgurl}}'></image>
+                    </view>
+                </view>
+
+            </block>
+
+        </view>
+    </view>
+    <!--使用指南-->
+    <view class='use-guide'>
+        <template is="head" data="{{name: '使用指南'}}"/>
+        <!--使用指南内容-->
+        <view class='guide-cont'>
+            <view class='use-title'>产品配件</view>
+            <image mode="widthFix" src='../../image/use2.jpg' class='use-img' ></image>
+
+            <view class='use-title'>操作界面</view>
+            <image mode="widthFix" src='../../image/use3.jpg' class='use-img'></image>
+
+            <view class='guide-video'>
+                <!-- <image src='../../image/demonstration.jpg' class='operat-img'></image> -->
+                <video class='use-video' src='http://product.joyoung.com/explain/assets/static/video/product.mp4'></video>
+            </view>
+
+            <view class='pro-tab'>
+                <view class='tab-list'>
+                    <block wx:for="{{list03}}">
+                        <view id="{{item.id}}" class="{{item.open ? 'on' : '' }}" bindtap='changSwiper'>{{item.name}}</view>
+                    </block>
+                </view>
+                <view class='tab-box list03-cont'>
+                    <!--烹饪准备 快速入门 使用说明-->
+                    <block wx:for="{{list03}}">
+                        <view class="tab-cont {{item.open ? 'on' : '' }}">
+                            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" data-code='{{item}}'>
+                                <block wx:for="{{item.imgurl}}" wx:for-index="idx" wx:for-item="itemImg">
+                                    <swiper-item>
+                                        <image src='{{itemImg}}' class='slide-image' />
+                                    </swiper-item>
+                                </block>
+                            </swiper>
+                        </view>
+                    </block>
+                </view>
+
+            </view>
+        </view>
+    </view>
+    <!--清洁保养-->
+    <view class='clear-cont'>
+        <template is="head" data="{{name: '清洁保养'}}"/>
+        <view>
+            <view class='tab-cont'>
+                <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+                    <block wx:for="{{imgclear}}">
+                        <swiper-item>
+                            <image src='{{item}}' class='slide-image' />
+                        </swiper-item>
+                    </block>
+                </swiper>
+            </view>
+        </view>
+    </view>
+
+    <!--常见问题-->
+    <view class='problem-cont'>
+        <template is="head" data="{{name: '常见问题'}}"/>
+        <!--常见问题内容-->
+        <view class='problem-box'>
+            <block wx:for="{{list04}}">
+                <view id="{{item.id}}" class="problem-list {{item.open ? 'on' : ''}}" bindtap='viewAnswer'>
+                    <view class='list-box'>
+                        <view class='list-left'>{{item.name}}</view>
+                        <view class='list-text'>{{item.problem}}</view>
+                        <view class='list-icon'></view>
+                    </view>
+                    <view class='answer-cont'>
+                        <view>{{item.answer}}</view>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <!--售后服务-->
+    <view>
+        <template is="head" data="{{name: '售后服务'}}"/>
+				<!--售后服务内容-->
+				<view class='after-cont'>
+						<view class='service-top'>
+								<image src='../../image/service1.png' class='service-img'></image>
+								<navigator url='http://kf.joyoung.com' hover-class="navigator-hover">http://kf.joyoung.com</navigator>
+								<view class='service-text'>登陆九阳网络客户服务中心查询</view>
+						</view>
+						<view class='service-midd'>
+								<image src='../../image/service2.png' class='service-img'></image>
+								<navigator url='tel:400-6188-999' hover-class="navigator-hover">400-6188-999</navigator>
+								<view class='service-text'>拨打九阳阳光服务热线查询</view>
+						</view>
+						<view class='service-bott'>
+								<image src='../../image/service3.png' class='service-img'></image>
+								<image src='../../image/qr_code.jpg' class='qr-code-img'></image>
+								<view class='service-text'>关注九阳公众号，进入后点击右下方【我】</view>
+								<view class='service-text'>选择【网点查询】进入查询即可</view>
+						</view>	
+				</view>	
+
+    </view>
+    <!--售后服务结束-->
+
+</view>

@@ -1,7 +1,7 @@
 {
   "name": "nw",
   "version": "1.0.4",
-  "description": "",
+  "description": "nw study project",
   "scripts": {
     "dev": "nw src/",
     "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/"

@@ -1,0 +1,43 @@
+/*
+* @Author: zhangling
+* @Date:   2017-07-14 11:19:44
+* @Last Modified by:   zhangling
+* @Last Modified time: 2017-07-14 13:19:53
+*/
+[v-cloak]{display:none;}
+
+table{
+	border-collapse: collapse;
+	width:400px;
+	margin-bottom: 20px;
+}
+
+table>thead>tr>td,
+table>tbody>tr>td{
+	padding:5px 10px;
+	border: #ddd 1px solid;
+}
+
+input{
+	width:365px;
+	border:#ddd 1px solid;
+	height:20px;
+	line-height: 20px;
+	margin:3px 0;
+}
+
+legend{
+	width:400px;
+	border-bottom:#ddd 1px solid;
+	margin-bottom: 10px
+}
+
+.addBtn{
+	margin-top:5px;
+	width:405px;
+	background:#DE5347;
+	padding:5px 0;
+	color:#fff;
+	border:none;
+	border-radius: 4px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<style>
+	[v-cloak]:{
+		display: none;
+	}
+</style>
+<body v-cloak>
+	<div id="app">
+		<div>customer message: {{msg}}</div>
+		<div v-once>test: {{msg | capitalize | appendNum}}</div>
+		<div v-html="rawHtml"></div>
+		<div>Mustache: {{rawHtml}}</div>
+		<div></div>
+	</div>
+</body>
+<script src="vue.js"></script>
+<script>
+	// var data = {name: 'Lambuda'}
+	// var vm = new Vue({
+	// 	el: '#app',
+	// 	data: {
+	// 		msg: 'hello world, this is test message ',
+	// 		rawHtml: '<span>testttttt v-html </span> kkkkkk',
+	// 		num: 5
+	// 	},
+	// 	computed: { // 计算属性
+	// 		numDouble: function(){
+	// 			return this.num * 2
+	// 		},
+	// 		numGetAndSet: {
+	// 			get: function(){
+	// 				return this.num + 1
+	// 			},
+	// 			set: function(v){
+	// 				return this.num = v-1
+	// 			}
+	// 		}
+	// 	},
+	// 	filters: { // 过滤器
+	// 		capitalize: function(value){
+	// 			if (!value) return ''
+	// 			value = value.toString()
+	// 			return value.charAt(0).toUpperCase() + value.slice(1)
+	// 		},
+	// 		appendNum: function(value){
+	// 			return value + '5'
+	// 		}
+	// 	}
+	// })
+	// console.log(vm.$data === data)
+	// console.log(vm.$el)
+
+	//=====================================
+	const NotFound = { template: '<p>Page not found</p>' }
+	const Home = { template: '<p>home page</p>' }
+	const About = { template: '<p>about page</p>' }
+	const routes = {
+	  '/': Home,
+	  '/about': About
+	}
+	new Vue({
+	  el: '#app',
+	  data: {
+	    currentRoute: window.location.pathname
+	  },
+	  computed: {
+	    ViewComponent () {
+	      return routes[this.currentRoute] || NotFound
+	    }
+	  },
+	  render (h) { return h(this.ViewComponent) }
+	})
+</script>
+</html>

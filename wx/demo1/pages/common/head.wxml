@@ -1,0 +1,10 @@
+<template name='head'>
+  <view class="title-head">
+    <view class="title-name">{{name}}</view>
+    <view class="title-bottom">
+      <image src="../../image/icon_title1.png" class="title-icon"></image>
+      <image src="../../image/line.png" class="title-line"></image>
+    </view>
+  </view>
+
+</template>

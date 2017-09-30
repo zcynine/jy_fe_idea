@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>列表渲染</title>
+</head>
+<body>
+<div id="demo">
+	<ul>
+		<li v-for="(item, index) in items">{{index}} : {{userName}}-{{userAge}}, {{item.name}} - {{item.age}}</li>	
+	</ul>
+	<ul>
+	    <li v-for="(value, key, index) in dataObj">{{index}}-{{key}}-{{value}}</li>
+	</ul>
+	<ul>
+	    <li v-for="num in getEvenNum">{{num}}</li>
+	</ul>
+	<div>
+		<span v-for="n in 10">{{n}} </span>
+	</div>
+	<ul>
+	    <template v-for="item in items">
+	    	<li>{{item.name}}</li>
+	    </template>
+	</ul>
+	<ul>
+	    <li v-for="item in dataArray" v-if="getOddNum">age: {{item.age}}</li>
+	</ul>
+	<ul v-if="items">
+		<li v-for="item in items">{{item.name}} - {{item.age}}</li>
+	</ul>
+	<!-- <div id="todo_demo">
+		<input v-model="">
+	</div> -->
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+	let data = {
+		userName: 'parentUserName',
+		userAge: 'parentUserAge',
+		items: [
+			{
+				name: '旺财',
+				age: '21',
+				flag: true
+			},
+			{
+				name: '啊喵~',
+				age: '2',
+				flag: true
+			},
+			{
+				name: '阿汪',
+				age: '26',
+				flag: false
+			}
+		],
+		dataObj: {
+			name: '刘德华',
+			age: '50'
+		},
+		dataArray: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	};
+
+	let vm = new Vue({
+		el: "#demo",
+		data: data,
+		computed: {
+			getEvenNum: function(){
+				return this.dataArray.filter(function(item){
+					return item%2 == 0 ;
+				});
+			},
+			getOddNum: function(){
+				return this.dataArray.filter((item)=>{
+					console.log(item)
+					if(item%2 != 0){
+						return item;
+					} 
+				})
+			}
+		}
+	});
+
+	setTimeout(function(){
+		vm.items.push({name:'张学友', age: '40'});
+	}, 3000);
+
+	setTimeout(function(){
+		var newItems = vm.items.concat([{'name':'周润发', 'age':'18'}, {'name':'金三胖', 'age':'6'}]);
+		console.log(newItems);
+	},5000);
+
+	setTimeout(function(){
+		Vue.set(vm.items, 0, {name: 'wangcai', age: '23'});	
+	},5000);
+	
+
+
+
+</script>

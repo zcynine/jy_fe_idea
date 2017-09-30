@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>vue-router</title>
+</head>
+<style>
+
+	.router-link-active {
+		color: red;
+	}
+
+</style>
+<body>
+	<div id="app">
+		<h1>Hell Routes~</h1>
+		<div class="nav">
+			<router-link to="/home">go to Home page</router-link>
+			<router-link to="/about">go to About page</router-link>
+			<router-link to="/error">go to Error page</router-link>
+			<router-link to="/user/user1">user1</router-link>
+			<router-link to="/user/user2">user2</router-link>
+		</div>
+		<router-view></router-view>
+	</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script src="vue-router.js"></script>
+<script>
+	//1.定义组件
+	const Home = {
+		template: '<div>home page</div>'
+	}
+
+	const About = {
+		template: '<div>about page</div>'
+	}
+
+	const ErrorPage = {
+		template: '<div>something went wrong, please try again later.</div>'
+	}
+
+	const User = {
+		template: '' //<div> {{$route.params.id}}</div>
+	}
+
+	//2.定义路由
+	const routes = [
+		{
+			path: '/home',
+			component: Home
+		},
+		{
+			path: '/about',
+			component: About
+		},
+		{
+			path: '/error',
+			component: ErrorPage
+		},
+		{
+			path: 'user/:id',
+			component: User
+		}
+	]
+
+	//3. 创建router实例
+	const router = new VueRouter({
+		routes
+	});
+
+
+	//4. 创建和挂载根实例
+	const app = new Vue({
+		el: '#app',
+		router: router
+	});
+
+	
+
+</script>

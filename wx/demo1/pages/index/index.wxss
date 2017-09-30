@@ -1,0 +1,286 @@
+/**index.wxss**/
+.container{
+	background: #fff;
+}
+.index-img {
+	margin-bottom: 120rpx;
+}
+.index-img image{
+  display: block;
+  width: 100%;
+}
+.product-nav{
+	position:absolute;
+	z-index: 100;
+	width: 100%;
+  overflow: hidden; 
+  background: #ccc;
+	color:#fff;
+}
+.product-nav .active{
+  color:#fff;
+  background: #eb6100;
+}
+.nav-a-div{
+	width: 20%;
+  text-align: center;
+	font-size: 30rpx;
+  padding: 12rpx 0;
+	float:left;
+}
+.nav-a-icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin:0 auto 10rpx;
+  
+}
+.nav-a-icon image{
+	display: block;
+	width: 40rpx;
+	height: 40rpx;
+}
+/*亮点*/
+.title-head{
+  padding: 40rpx;
+
+}
+.title-bottom{
+  position: relative;
+  margin-top: 40rpx;
+}
+.title-name{
+  text-align: center;
+	font-weight: bold;
+}
+.title-icon{
+  display: block;
+  width: 50rpx;
+  height:50rpx;
+  margin: 0 auto;
+}
+ .title-line{
+	width: 100%;
+  height: 4rpx;
+ 	position: absolute;
+	top: 20rpx;
+}
+.line-cont{
+	overflow: hidden;
+}
+.line-box{
+	overflow: hidden;
+	background: #f4f4f4;
+}
+.box-cont{
+	position: relative;
+	width: 50%;
+	height: 300rpx;
+	float: left;
+}
+.line-img image{
+	width: 380rpx;
+	height:340rpx;
+}
+.line-text{
+	width: 40%;
+	padding:20rpx 5%;
+}
+.line-title{
+	font-size: 40rpx;
+	color:#eb6100;
+}
+.line-seq{
+	position: absolute;
+	bottom: 20rpx;
+	font-size: 100rpx;
+	color: #e6e2e0;
+}
+.seq-right{
+	right: 40rpx;
+}
+.seq-left{
+	left: 40rpx;
+}
+/*使用指南*/
+
+.guide-cont{
+	padding-bottom: 30rpx;
+}
+.use-title{
+	margin-left: 40rpx;
+	padding-left: 30rpx;
+	border-left: 8rpx solid #eb6100;
+	font-size: 30rpx;
+	font-weight: bold;
+}
+.use-img{
+	display: block;
+	width: 80%;
+	margin: 80rpx auto;
+}
+.operat-img{
+	width: 100%;
+}
+.pro-tab{
+	padding: 40rpx 20rpx;
+}
+.tab-list{
+	overflow: hidden;
+	margin-bottom: 30rpx;
+	padding: 0 20rpx;
+}
+.tab-list view{
+	float: left;
+	font-size: 40rpx;
+	padding: 0 30rpx;
+	font-weight: bold;
+}
+.tab-list view.on{
+	border-left: 8rpx solid #eb6100;
+}
+tab-box .on{
+	display: block
+}
+
+.tab-cont{
+	overflow: hidden;
+}
+.list03-cont .tab-cont{
+	display: none;
+}
+.list03-cont .on{
+	display: block
+}
+.tab-cont swiper{
+	overflow: hidden;
+	width: 100%;
+	height: 800rpx;
+	background: #fff;
+}
+.tab-cont swiper image{
+	display: block;
+	width: 70%;
+	height: 80%;
+	margin: 40rpx auto ;
+}
+.use-video{
+  width: 100%;
+}
+
+/*清洁保养*/
+.clear-cont{
+	background: #f4f4f4;
+	padding: 0 20rpx;
+	margin-bottom: 30rpx;
+}
+
+/*常见问题*/
+.problem-cont{
+	overflow: hidden;
+	background: #f4f4f4;
+	padding-bottom: 30rpx;
+}
+.problem-box{
+	padding: 0 30rpx;
+}
+
+.problem-list{
+	background: #fff;
+	padding:30rpx 8rpx;
+	margin-bottom: 10rpx;
+	overflow: hidden;
+	font-size: 26rpx;
+}
+.list-box{
+	position: relative;
+	overflow: hidden;
+	padding: 0 60rpx;
+}
+.list-box view{
+	float: left;
+
+}
+.list-left{
+	position: absolute;
+	left: 0;
+	top:50%;
+	transform:translateY(-50%);
+	color:#f26521
+}
+.list-text{
+	color:#555;
+}
+.list-icon{
+	position: absolute;
+	right: 0;
+	top:50%;
+	transform:translateY(-50%);
+	width: 30rpx;
+	height: 30rpx;
+	background: url('http://product.joyoung.com/explain/assets/static/images/product/open.png') no-repeat;
+	background-size: 100%;
+}
+.problem-box .on .list-icon{
+	margin-top: 15rpx;
+	background: url('http://product.joyoung.com/explain/assets/static/images/product/close.png') no-repeat;
+	background-size: 100%;
+}
+.answer-cont{
+	opacity:0;
+	height: 0;
+	padding: 0 60rpx;
+	color:#555;
+	transition: .3s;
+}
+.problem-box .on .list-text{
+	color:#ff6600
+}
+.problem-box .on .answer-cont{
+	opacity:1;
+	height: auto;
+	padding: 20rpx 60rpx 0;
+	transition: .3s;
+}
+
+/*售后服务*/
+.after-cont{
+	overflow: hidden;
+	text-align: center;
+	font-size: 28rpx;
+	margin-bottom: 50rpx;
+}
+.service-img{
+	display: block;
+	margin: 0 auto;
+}
+.service-top .service-img{
+	width: 60rpx;
+	height: 60rpx;
+}
+.service-midd .service-img{
+	width: 60rpx;
+	height: 55rpx;
+}
+.service-bott .service-img{
+	width: 70rpx;
+	height: 50rpx;
+}
+.service-midd navigator{
+	font-size: 50rpx;
+}
+.after-cont navigator{
+	font-weight: bold;
+	margin: 20rpx 0;
+}
+.service-midd{
+	margin:80rpx 0;
+}
+.qr-code-img{
+	display: block;
+	width: 240rpx;
+	height: 240rpx;
+	margin: 20rpx auto;
+}
+.service-text{
+	color:#666;
+}

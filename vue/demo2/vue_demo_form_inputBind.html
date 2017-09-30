@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单输入绑定</title>
+</head>
+<body>
+
+<div id="app">
+	<input v-model="msg" placeholder="user email"><br/>
+	<textarea v-model="msg"></textarea>
+	<p style="white-space: pre-line;">the content is: {{msg}}</p>
+	<input type="checkbox" id="checkbox" v-model="checked">
+	<label for="checkbox">{{checked}}</label><br/>
+	<br/>
+	<div>
+		<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+		<label for="jack">Jack</label>
+		<input type="checkbox" id="john" value="John" v-model="checkedNames">
+		<label for="john">John</label>
+		<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+		<label for="mike">Mike</label><br/>
+		<span>checked names: {{checkedNames}}</span>
+	</div>
+	<br/>
+	<div>
+		<input type="checkbox" id="Text" value="Text" v-model="person.Text">
+		<label for="Text">Jack</label>
+		<input type="checkbox" id="Aike" value="Aike" v-model="person.Aike">
+		<label for="Aike">Aike</label>
+		<input type="checkbox" id="mike" value="Teruya" v-model="person.Teruya">
+		<label for="Teruya">Teruya</label>
+	</div>
+	<br/>
+	<div>
+		<input type="radio" id="yes" value="Yes" v-model="selected" name="yes">
+		<label for="yes">Yes</label>
+		<input type="radio" id="no" value="No" v-model="selected" name="no">
+		<label for="no">No</label><br>
+		<span>selected: {{selected}}</span>
+	</div>
+	<br/>
+	<div>
+		<select v-model="dropdown" multiple="">
+			<option disabled value="">--请选择--</option>
+			<option>one</option>
+			<option>tow</option>
+			<option>three</option>
+			<option>four</option>
+			<option>five</option>
+			<option>six</option>
+		</select>
+		<span>Selected: {{dropdown}}</span>
+	</div>
+	<div>
+		<select v-model="dynamicDropdown">
+			<option v-for="option in options" v-bind:value="option.value">{{option.text}}</option>
+		</select></br>
+		<span>selected: {{dynamicDropdown}}</span>
+	</div>
+	<input type="checkbox" id="test" v-model="toggle" v-bind:true-value="marked" v-bind:false-value="unmarked" name="">
+	<!-- <label for="test">{{toggle}}</label> -->
+	<div v-html="test"></div>
+	<div v-html="marked"></div>
+	<div>{{test}}</div>
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+	let app = new Vue({
+		el: '#app',
+		data: {
+			msg:'',
+			test: '<span>hello vue~</span>',
+			checked: true,
+			toggle: '',
+			marked: 'marked',
+			unmarked: 'unmarked',
+			checkedNames: [],
+			person: {
+				Text: true,
+				Aike: false,
+				Teruya: true
+			},
+			selected: '',
+			dropdown: [],
+			options: [
+				{text: '北京', value: 'bj'},
+				{text: '上海', value: 'sh'},
+				{text: '广东', value: 'gd'},
+				{text: '深圳', value: 'sz'},
+			],
+			dynamicDropdown: []
+		}
+		
+	});
+
+	// app.toggle === app.marked;
+	// app.toggle === app.unmarked;
+</script>

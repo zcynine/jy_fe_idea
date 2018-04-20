@@ -4,8 +4,6 @@
 
 - [阮一峰ES6文档](http://es6.ruanyifeng.com/)
 
-- [阮一峰ES6代码](https://github.com/ruanyf/es6tutorial)
-
 - [Vue.js官方教程](https://cn.vuejs.org/v2/guide/)
 
 - [Webpack官方文档](https://doc.webpack-china.org/guides/)
